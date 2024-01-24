@@ -14,6 +14,8 @@ poetry install
 
 ## Developing
 
+Use `poetry run python3 <file>` to execute a file with the virtual environment.
+
 Run lints
 ```bash
 just lint

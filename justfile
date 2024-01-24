@@ -10,4 +10,5 @@ format:
     poetry run black .
 
 test:
-    poetry run pytest
+    poetry run coverage run -m pytest
+    poetry run coverage report -m

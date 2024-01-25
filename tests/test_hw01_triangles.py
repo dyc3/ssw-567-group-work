@@ -43,6 +43,7 @@ def test_right_triangle_simple():
 @given(a=st.integers(min_value=1), b=st.integers(min_value=1))
 def test_isosceles_triangle(a: int, b: int):
     assume(a != b)
+    assume(a + b > b and b + b > a)
     assert "Isosceles" in classify_triangle(a, b, b)
     assert "Isosceles" in classify_triangle(b, a, b)
     assert "Isosceles" in classify_triangle(b, b, a)
@@ -50,9 +51,11 @@ def test_isosceles_triangle(a: int, b: int):
 
 @given(a=st.integers(min_value=1), b=st.integers(min_value=1))
 def test_right_triangle(a: int, b: int):
-    assert "Right" in classify_triangle(a, b, (a**2 + b**2) ** 0.5)
-    assert "Right" in classify_triangle(b, a, (a**2 + b**2) ** 0.5)
-    assert "Right" in classify_triangle(b, (a**2 + b**2) ** 0.5, a)
-    assert "Right" in classify_triangle((a**2 + b**2) ** 0.5, b, a)
-    assert "Right" in classify_triangle((a**2 + b**2) ** 0.5, a, b)
-    assert "Right" in classify_triangle(a, (a**2 + b**2) ** 0.5, b)
+    c = (a**2 + b**2) ** 0.5
+    assume(a + b > c and a + c > b and b + c > a)
+    assert "Right" in classify_triangle(a, b, c)
+    assert "Right" in classify_triangle(b, a, c)
+    assert "Right" in classify_triangle(b, c, a)
+    assert "Right" in classify_triangle(c, b, a)
+    assert "Right" in classify_triangle(c, a, b)
+    assert "Right" in classify_triangle(a, c, b)

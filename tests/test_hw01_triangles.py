@@ -7,6 +7,7 @@ from hypothesis import given, strategies as st, assume
     a=st.integers(min_value=1), b=st.integers(min_value=1), c=st.integers(min_value=1)
 )
 def test_valid_triangles_ints(a: int, b: int, c: int):
+    assume(a + b > c and a + c > b and b + c > a)
     assert classify_triangle(a, b, c) != "NotATriangle"
 
 
@@ -16,7 +17,16 @@ def test_valid_triangles_ints(a: int, b: int, c: int):
     c=st.floats(min_value=0.1, max_value=100000000),
 )
 def test_valid_triangles_floats(a: float, b: float, c: float):
+    assume(a + b > c and a + c > b and b + c > a)
     assert classify_triangle(a, b, c) != "NotATriangle"
+
+
+@given(
+    a=st.integers(min_value=1), b=st.integers(min_value=1), c=st.integers(min_value=1)
+)
+def test_invalid_triangles(a: int, b: int, c: int):
+    assume(not (a + b > c and a + c > b and b + c > a))
+    assert classify_triangle(a, b, c) == "NotATriangle"
 
 
 @given(num=st.integers(min_value=1))

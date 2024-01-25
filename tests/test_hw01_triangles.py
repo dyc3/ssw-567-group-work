@@ -1,4 +1,4 @@
-from src.hw01_triangles import classify_triangle
+from src.hw01_classify_triangle import classify_triangle
 
 from hypothesis import given, strategies as st, assume
 

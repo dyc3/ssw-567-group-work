@@ -1,4 +1,6 @@
-# ssw-567-group-work
+# triangles
+
+[![CI](https://github.com/ssw-567-group-work/triangles/actions/workflows/ci.yml/badge.svg?event=push)](https://github.com/ssw-567-group-work/triangles/actions/workflows/ci.yml)
 
 ## Setup
 

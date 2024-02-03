@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ssw-567-group-work"
+name = "triangles"
 version = "0.1.0"
 description = ""
 authors = ["Carson McManus <carson.mcmanus1@gmail.com>"]
